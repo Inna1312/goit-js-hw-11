@@ -11,9 +11,9 @@ export class PixabayAPI {
              image_type: 'photo',
              orientation: 'horizontal',
              safesearch: true,
-             per_page: 40,
+            //  per_page: 40,
              q: this.q,
-             page: this.page,
+            //  page: this.page,
          }
          );
         return await axios.get(`${this.#BASE_URL}?${searchParams}`);
