@@ -19,12 +19,12 @@ const options = {
 
 const observer = new IntersectionObserver(handleIntersect, options);
 searchForm.addEventListener('submit', handlerSearchForm);
-// loadMoreBtn.addEventListener('click', handlerLoadMoreBtn);
+loadMoreBtn.addEventListener('click', handlerLoadMoreBtn);
 
 function handlerSearchForm(evt) {
   evt.preventDefault();
   target.hidden = true;
-  // loadMoreBtn.hidden = true;
+  loadMoreBtn.hidden = true;
   gallery.innerHTML = '';
   const searchQuery = evt.currentTarget.elements['searchQuery'].value.trim();
   pixabayAPI.q = searchQuery;
@@ -37,7 +37,7 @@ async function searchPhotos() {
     const { data } = await pixabayAPI.fetchPhotos();
     if (data.hits.length < 1) {
       Notify.failure('Sorry, there are no images matching your search query. Please try again.');
-      // loadMoreBtn.hidden = true;
+      loadMoreBtn.hidden = true;
       return;
     }
     Notify.success(`Hooray! We found ${data.totalHits} images.`);
@@ -45,7 +45,7 @@ async function searchPhotos() {
     target.hidden = false;
     observer.observe(target);
     simplelightbox.refresh();
-    // loadMoreBtn.hidden = false;
+    loadMoreBtn.hidden = false;
   } catch (error) {
     console.log(error);
     
@@ -60,29 +60,6 @@ function handleIntersect(evt) {
 }
 
  
-// async function searchMorePhotos() {
-//   try {
-//     const result = pixabayAPI.page * 40;
-//     const { data } = await pixabayAPI.fetchPhotos();
-//     gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits)); 
-//     if (result >= data.totalHits) {
-//       observer.unobserve(target);
-//       Notify.failure("We're sorry, but you've reached the end of search results.");
-//       // loadMoreBtn.hidden = true;
-//       return;
-//     };
-//     // addSmoothScroll();
-//     simplelightbox.refresh();
-//   } catch (error) {
-    
-//   }
-
-// }
-
-
-
-//<-----------------------------функціонал для кнопки load more-------------------------->
-
 
 function handlerLoadMoreBtn() {
   pixabayAPI.page += 1;
@@ -116,3 +93,4 @@ function addSmoothScroll() {
     behavior: "smooth",
   });
 }
+
