@@ -53,7 +53,7 @@ async function searchPhotos() {
 }
 
 function handleIntersect(evt) {
-  pixabayAPI.page += 1;
+  // pixabayAPI.page += 1;
   if (evt[0].isIntersecting) {
     searchMorePhotos(); 
   }
