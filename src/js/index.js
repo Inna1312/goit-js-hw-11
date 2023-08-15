@@ -60,24 +60,24 @@ function handleIntersect(evt) {
 }
 
  
-async function searchMorePhotos() {
-  try {
-    const result = pixabayAPI.page * 40;
-    const { data } = await pixabayAPI.fetchPhotos();
-    gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits)); 
-    if (result >= data.totalHits) {
-      observer.unobserve(target);
-      Notify.failure("We're sorry, but you've reached the end of search results.");
-      // loadMoreBtn.hidden = true;
-      return;
-    };
-    // addSmoothScroll();
-    simplelightbox.refresh();
-  } catch (error) {
+// async function searchMorePhotos() {
+//   try {
+//     const result = pixabayAPI.page * 40;
+//     const { data } = await pixabayAPI.fetchPhotos();
+//     gallery.insertAdjacentHTML('beforeend', createMarkup(data.hits)); 
+//     if (result >= data.totalHits) {
+//       observer.unobserve(target);
+//       Notify.failure("We're sorry, but you've reached the end of search results.");
+//       // loadMoreBtn.hidden = true;
+//       return;
+//     };
+//     // addSmoothScroll();
+//     simplelightbox.refresh();
+//   } catch (error) {
     
-  }
+//   }
 
-}
+// }
 
 
 
